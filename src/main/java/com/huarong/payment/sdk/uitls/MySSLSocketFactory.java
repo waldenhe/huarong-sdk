@@ -28,6 +28,7 @@ import org.apache.http.conn.ssl.SSLSocketFactory;
  * @author linys
  * 
  */
+@SuppressWarnings("deprecation")
 public class MySSLSocketFactory extends SSLSocketFactory{
 
     SSLContext sslContext = SSLContext.getInstance("TLS");

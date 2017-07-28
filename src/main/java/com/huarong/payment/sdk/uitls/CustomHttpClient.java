@@ -29,7 +29,7 @@ import org.apache.http.protocol.HTTP;
  * 
  * @author hjh
  */
-@SuppressWarnings(value = { "" })
+@SuppressWarnings("deprecation")
 public class CustomHttpClient{
     private static HttpClient customHttpClient          = httpClientInstance();
     private static final int  TIME_OUT                  = 1000 * 60;

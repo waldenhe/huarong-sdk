@@ -6,7 +6,7 @@ package com.huarong.payment.sdk.dto;
  * @author hjh
  *
  */
-public class QuickPayDto extends BastDto {
+public class QuickPayDto extends BaseDto {
     private static final long serialVersionUID = -6614118198471236729L;
     /** 卡号 */
     private String cardNo;
@@ -26,7 +26,14 @@ public class QuickPayDto extends BastDto {
     private String cvn2;
     /** 短信验证码 */
     private String veriCode;
-
+    
+    
+    public QuickPayDto() {
+		super();
+		this.setProductId("");
+		this.setTransId("");
+	}
+    
     public String getCardNo() {
         return cardNo;
     }

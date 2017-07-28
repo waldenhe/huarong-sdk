@@ -1,6 +1,11 @@
 package com.huarong.payment.sdk.dto;
 
 import java.io.Serializable;
+import java.util.Map;
+
+import org.apache.commons.beanutils.BeanUtilsBean2;
+
+import com.huarong.payment.sdk.uitls.BeanToMapUtil;
 
 /**
  * 基类模型
@@ -8,7 +13,7 @@ import java.io.Serializable;
  * @author hjh
  *
  */
-public class BaseDto implements Serializable {
+public class BaseDto implements Serializable{
     private static final long serialVersionUID = 1L;
 
     /**
@@ -200,5 +205,8 @@ public class BaseDto implements Serializable {
                 + transAmt + ", commodityName=" + commodityName + ", productId=" + productId + ", transId=" + transId
                 + ", orderDate=" + orderDate + ", notifyUrl=" + notifyUrl + ", returnUrl=" + returnUrl + "]";
     }
-
+    
+    public Map<String, Object> toMap(){
+    	return BeanToMapUtil.transBean2Map(this); 
+    }
 }

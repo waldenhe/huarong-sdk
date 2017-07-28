@@ -23,7 +23,7 @@ import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.protocol.HTTP;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
+@SuppressWarnings("deprecation")
 public class HttpRequestSimple {
     public static final Logger logger = LoggerFactory.getLogger(HttpRequestSimple.class);
     private static HttpRequestSimple instance;
@@ -229,7 +229,7 @@ public class HttpRequestSimple {
                 return null;
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error("接口请求异常",e);
             return null;
         } finally {
             if (br != null) {
