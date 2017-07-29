@@ -95,7 +95,7 @@ public class RSAUtil {
 
     public static boolean verifyByKeyPath(String content, String sign, String publicKeyStr, String input_charset) {
         try {
-            return verify(content, sign, getKey(content), input_charset);
+            return verify(content, sign, getKey(publicKeyStr), input_charset);
         } catch (Exception e) {
             e.printStackTrace();
         }

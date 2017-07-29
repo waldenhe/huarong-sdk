@@ -1,7 +1,6 @@
 package com.huarong.payment.sdk.trans;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -16,7 +15,7 @@ import com.huarong.payment.sdk.uitls.ConfigUtils;
 import com.huarong.payment.sdk.uitls.HttpRequestSimple;
 import com.huarong.payment.sdk.uitls.SignUtils;
 
-public abstract class DefaultTransApi<T extends BaseDto> {
+public  class DefaultTransApi<T extends BaseDto> implements TransApi<T>{
 	
 	/**
 	 * 通用接口调用方法
@@ -27,8 +26,6 @@ public abstract class DefaultTransApi<T extends BaseDto> {
 	public T trans(T t) throws Exception{
 		try {
 			Map<String, Object> map = t.toMap();
-			//加签
-			t.setSignature(SignUtils.signDataObject(map));
 			List<BasicNameValuePair> list = new ArrayList<>();
 			for (String key : map.keySet()) {
 				Object value = map.get(key);
@@ -36,6 +33,9 @@ public abstract class DefaultTransApi<T extends BaseDto> {
 					list.add(new BasicNameValuePair(key, value.toString()));
 				}
 			}
+			//加签
+			list.add(new BasicNameValuePair("signature", SignUtils.signData(list)));
+			
 			String result = HttpRequestSimple.getInstance().postPramaList(list, ConfigUtils.getProperty("trans_url"));
 			if (null == result) {
 				return null;

@@ -46,7 +46,7 @@ public class BeanToMapUtil {
             for (PropertyDescriptor property : propertyDescriptors) {  
                 String key = property.getName();  
   
-                if (map.containsKey(key)) {  
+                if (map.containsKey(key) && !key.equals("class")) {  
                     Object value = map.get(key);  
                     // 得到property对应的setter方法  
                     Method setter = property.getWriteMethod();  

@@ -55,8 +55,7 @@ public class SignUtils {
 			buf.append(key).append("=").append((String) tempMap.get(key)).append("&");
 		}
 		String signatureStr = buf.substring(0, buf.length() - 1);
-		String signData = RSAUtil.signByPrivate(signatureStr,
-				RSAUtil.readFile(ConfigUtils.getProperty("private_key_path"), "UTF-8"), "UTF-8");
+		String signData = RSAUtil.signByPrivate(signatureStr, preivateKeyStr, "UTF-8");
 		logger.info("请求数据:{},签名数据:{}", signatureStr, signData);
 		return signData;
 	}

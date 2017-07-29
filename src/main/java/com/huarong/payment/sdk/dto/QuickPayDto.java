@@ -30,8 +30,8 @@ public class QuickPayDto extends BaseDto {
     
     public QuickPayDto() {
 		super();
-		this.setProductId("");
-		this.setTransId("");
+		this.setProductId("0302");//固定值
+		this.setTransId("13");//短信签约
 	}
     
     public String getCardNo() {
@@ -103,6 +103,8 @@ public class QuickPayDto extends BaseDto {
     }
 
     public void setVeriCode(String veriCode) {
+    	this.setTransId("15");
+    	this.setSignature("");
         this.veriCode = veriCode;
     }
 
