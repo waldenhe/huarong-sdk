@@ -14,7 +14,7 @@ public class DefaultTransApiTest {
 	
 	@Test
 	public void testQuickTrans() throws Exception {
-		TransApi<QuickPayDto> transApi = new DefaultTransApi<QuickPayDto>();
+		TransApi<QuickPayDto> transApi = new DefaultTransApi<>();
 		QuickPayDto quickPayDto = new QuickPayDto();
 		quickPayDto.setRequestNo(new SimpleDateFormat("yyyyMMddHHmmssSSS").format(new Date()));
 		quickPayDto.setVersion("V1.0");
@@ -22,7 +22,6 @@ public class DefaultTransApiTest {
 		quickPayDto.setOrderDate(new SimpleDateFormat("yyyyMMdd").format(new Date()));
 		quickPayDto.setOrderNo(new SimpleDateFormat("yyyyMMddHHmmss").format(new Date()));
 		quickPayDto.setTransAmt("1");
-		quickPayDto.setNotifyUrl(ConfigUtils.getProperty("notifyUrl"));
 		quickPayDto.setCardName("张三");
 		quickPayDto.setCardNo("6217003170000000000");
 		quickPayDto.setPhoneNo("13600000000");
@@ -52,7 +51,6 @@ public class DefaultTransApiTest {
 		payDto.setIsCompay("0");
 		payDto.setCustomerName("李四");
 		payDto.setNote("测试商品");
-		payDto.setNotifyUrl(ConfigUtils.getProperty("notifyUrl"));
 		transApi.trans(payDto);
 	}
 }

@@ -7,7 +7,7 @@
 	<artifactId>payment-sdk</artifactId>
 	<version>1.0</version>
 	<packaging>war</packaging>
-	<name>深圳市华融电子支付信息技术有限公司</name>
+	<name>深圳市华融电子支付科技有限公司</name>
 	<url>http://www.szhuarong.com/</url>
 	<properties>
 		<java.jdk.version>1.7</java.jdk.version>

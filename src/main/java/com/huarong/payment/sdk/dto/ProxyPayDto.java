@@ -23,6 +23,7 @@ public class ProxyPayDto extends BaseDto {
 	private String note;
 	
 	public ProxyPayDto() {
+		super();
 		this.setTransId("07");
 		this.setProductId("0201");
 	}
