@@ -6,7 +6,7 @@
 	<groupId>com.wanrong</groupId>
 	<artifactId>payment-sdk</artifactId>
 	<version>1.0</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<name>深圳市华融电子支付科技有限公司</name>
 	<url>http://www.szhuarong.com/</url>
 	<properties>
