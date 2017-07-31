@@ -39,7 +39,7 @@ public  class DefaultTransApi<T extends BaseDto> implements TransApi<T>{
 			
 			String result = HttpRequestSimple.getInstance().postPramaList(list, ConfigUtils.getProperty("trans_url"));
 			if (null == result) {
-				return null;
+				throw new PayException(ResponseEnum.API_ERROE_CODE_9998);
 			}else {
 				if (SignUtils.verferSignData(result)) {
 					map = BeanToMapUtil.strToMap(result);
