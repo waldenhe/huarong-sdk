@@ -17,6 +17,11 @@ import com.huarong.payment.sdk.exception.PayException;
 import com.huarong.payment.sdk.uitls.BrowseUtil;
 import com.huarong.payment.sdk.uitls.ConfigUtils;
 
+/**
+ * 交易接口测试类
+ * @author hjh
+ *
+ */
 public class DefaultTransApiTest {
 
     /**
