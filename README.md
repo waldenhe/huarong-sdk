@@ -2,8 +2,8 @@ huarong-sdk
 华融支付SDK项目
 
 
-	1. 第一步：git clone https://github.com/walden1993/huarong-sdk.git 
-	          或者直接下载 https://github.com/walden1993/huarong-sdk/archive/master.zip
+	1. 第一步：git clone https://github.com/waldenhe/huarong-sdk.git 
+	          或者直接下载 https://github.com/waldenhe/huarong-sdk/archive/master.zip
 	2. 第二步： clone项目之后进入项目目录执行mvn eclipse:eclipse   
 	3. 第三步：使用Eclipse  File>import 
 	4. 第四步：查看src/test/java里面的测试用例，针对不同的业务，参考不同的测试用例。
