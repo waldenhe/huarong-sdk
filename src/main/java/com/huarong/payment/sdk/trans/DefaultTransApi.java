@@ -30,7 +30,7 @@ public  class DefaultTransApi<T extends BaseDto> implements TransApi<T>{
 			List<BasicNameValuePair> list = new ArrayList<>();
 			for (String key : map.keySet()) {
 				Object value = map.get(key);
-				if (value != null && StringUtils.isNotEmpty(value.toString())) {
+				if (value != null && StringUtils.isNotEmpty(value.toString()) && !"signature".equals(key)) {
 					list.add(new BasicNameValuePair(key, value.toString()));
 				}
 			}
