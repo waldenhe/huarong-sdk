@@ -11,6 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.huarong.payment.sdk.dto.B2CPayDto;
+import com.huarong.payment.sdk.uitls.BrowseUtil;
 import com.huarong.payment.sdk.uitls.SignUtils;
 
 public class B2CTransApi implements TransApi<B2CPayDto> {
@@ -136,27 +137,7 @@ public class B2CTransApi implements TransApi<B2CPayDto> {
         // 组装接口参数，并进行加密
         Map<String, String> map = getMapValues(dto);
         String link = buildHtmlForm(map, dto.getTrans_url());
-        // 判断当前系统是否支持Java AWT Desktop扩展
-        if (java.awt.Desktop.isDesktopSupported()) {
-            try {
-                // 创建一个URI实例,注意不是URL
-                // java.net.URI uri = java.net.URI.create(link);
-                // 获取当前系统桌面扩展
-                java.awt.Desktop dp = java.awt.Desktop.getDesktop();
-                // 判断系统桌面是否支持要执行的功能
-                if (dp.isSupported(java.awt.Desktop.Action.BROWSE)) {
-                    // 获取系统默认浏览器打开链接
-                    // dp.browse(uri);
-                    dp.open(new File(link));
-                }
-            } catch (java.lang.NullPointerException e) {
-                // 此为uri为空时抛出异常
-                System.out.println("无可用浏览器");
-            } catch (java.io.IOException e) {
-                // 此为无法获取系统默认浏览器
-                System.out.println("无可用浏览器");
-            }
-        }
+        BrowseUtil.openUrl(link);
     }
 
     @Override

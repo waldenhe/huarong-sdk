@@ -41,6 +41,11 @@ public  class DefaultTransApi<T extends BaseDto> implements TransApi<T>{
 			if (null == result) {
 				throw new PayException(ResponseEnum.API_ERROE_CODE_9998);
 			}else {
+			    if (!result.contains("signature=")) {
+			        map = BeanToMapUtil.strToMap(result);
+			        throw new PayException(map.get("respCode").toString(), map.get("respDesc").toString());
+                }
+			    
 				if (SignUtils.verferSignData(result)) {
 					map = BeanToMapUtil.strToMap(result);
 					BeanToMapUtil.transMap2Bean(map, t);
