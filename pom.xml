@@ -115,16 +115,6 @@
 
 
 	<build>
-		<resources>
-			<resource>
-				<directory>src/test/java</directory>
-				<!-- 排除 -->
-				<excludes>
-					<exclude>**/*</exclude>
-				</excludes>
-				<filtering>true</filtering>
-			</resource>
-		</resources>
 		<finalName>payment-sdk</finalName>
 		<plugins>
 			<plugin>
