@@ -1,5 +1,6 @@
 package com.huarong.payment.sdk.trans;
 
+import com.huarong.payment.sdk.exception.PayException;
 
 public interface TransApi<T> {
 	/**
@@ -8,5 +9,5 @@ public interface TransApi<T> {
 	 * @return
 	 * @throws Exception
 	 */
-	public T trans(T t) throws Exception;
+	public T trans(T t) throws Exception,PayException;
 }

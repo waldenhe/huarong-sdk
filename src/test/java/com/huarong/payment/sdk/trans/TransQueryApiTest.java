@@ -8,8 +8,12 @@ import org.junit.Test;
 import com.huarong.payment.sdk.dto.ProxyPayDto;
 import com.huarong.payment.sdk.dto.QuickPayDto;
 import com.huarong.payment.sdk.dto.TransQueryDto;
-
-public class DefaultTransApiTest {
+/**
+ * 交易查询测试类
+ * @author hjh
+ *
+ */
+public class TransQueryApiTest {
 	
 	
 	@Test

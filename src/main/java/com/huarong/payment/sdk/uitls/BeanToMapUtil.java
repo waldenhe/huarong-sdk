@@ -4,8 +4,11 @@ import java.beans.BeanInfo;
 import java.beans.Introspector;
 import java.beans.PropertyDescriptor;
 import java.lang.reflect.Method;
+import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.beanutils.BeanUtils;
 import org.slf4j.Logger;
@@ -38,6 +41,44 @@ public class BeanToMapUtil {
 	}
     // Map --> Bean 1: 利用Introspector,PropertyDescriptor实现 Map --> Bean  
     public static void transMap2Bean(Map<String, Object> map, Object obj) {  
+  
+        try {  
+            BeanInfo beanInfo = Introspector.getBeanInfo(obj.getClass());  
+            PropertyDescriptor[] propertyDescriptors = beanInfo.getPropertyDescriptors();  
+  
+            for (PropertyDescriptor property : propertyDescriptors) {  
+                String key = property.getName();  
+  
+                if (map.containsKey(key) && !key.equals("class")) {  
+                    Object value = map.get(key);  
+                    // 得到property对应的setter方法  
+                    Method setter = property.getWriteMethod();  
+                    setter.invoke(obj, value);  
+                }  
+  
+            }  
+  
+        } catch (Exception e) {  
+            logger.info("transMap2Bean Error " + e);  
+        }  
+  
+        return;  
+  
+    }
+    
+    public static void initRequestMap(HttpServletRequest request, Map<String, String> reqMap) {
+        Enumeration<?> temp = request.getParameterNames();
+        if (null != temp) {
+            while (temp.hasMoreElements()) {
+                String en = (String) temp.nextElement();
+                String value = request.getParameter(en);
+                reqMap.put(en, value);
+            }
+        }
+    }
+    
+    // Map --> Bean 1: 利用Introspector,PropertyDescriptor实现 Map --> Bean  
+    public static void transMap2Bean3(Map<String, String> map, Object obj) {  
   
         try {  
             BeanInfo beanInfo = Introspector.getBeanInfo(obj.getClass());  

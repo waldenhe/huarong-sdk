@@ -77,5 +77,23 @@ public class SignUtils {
 		logger.info("验签数据：{}", signatureStr);
 		return RSAUtil.verifyByKeyPath(signatureStr, signature, publicKeyStr, "UTF-8");
 	}
+	
+	public static boolean verferSignData(Map<String, String> map) {
+        logger.info("响应数据：{}", map);
+        StringBuffer buf = new StringBuffer();
+        String signature = "";
+        for (String key : map.keySet()) {
+            String value= map.get(key);
+            if ("signature".equals(key)) {
+                signature = value;
+            } else {
+                buf.append(key).append("=").append(value).append("&");
+            }
+        }
+        
+        String signatureStr = buf.substring(0, buf.length() - 1);
+        logger.info("验签数据：{}", signatureStr);
+        return RSAUtil.verifyByKeyPath(signatureStr, signature, publicKeyStr, "UTF-8");
+    }
 
 }

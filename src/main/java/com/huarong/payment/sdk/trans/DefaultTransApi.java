@@ -23,7 +23,8 @@ public  class DefaultTransApi<T extends BaseDto> implements TransApi<T>{
 	 * @return 
 	 * @throws Exception
 	 */
-	public T trans(T t) throws Exception{
+    @Override
+	public T trans(T t) throws Exception,PayException{
 		try {
 			Map<String, Object> map = t.toMap();
 			List<BasicNameValuePair> list = new ArrayList<>();
