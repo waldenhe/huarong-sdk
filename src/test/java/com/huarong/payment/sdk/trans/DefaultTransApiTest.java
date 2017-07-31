@@ -7,11 +7,16 @@ import org.junit.Test;
 
 import com.huarong.payment.sdk.dto.ProxyPayDto;
 import com.huarong.payment.sdk.dto.QuickPayDto;
+import com.huarong.payment.sdk.dto.ReportDto;
 import com.huarong.payment.sdk.dto.TransQueryDto;
+import com.huarong.payment.sdk.exception.PayException;
 
 public class DefaultTransApiTest {
 	
-	
+	/**
+	 * 快捷支付
+	 * @throws Exception
+	 */
 	@Test
 	public void testQuickTrans() throws Exception {
 		TransApi<QuickPayDto> transApi = new DefaultTransApi<>();
@@ -33,6 +38,11 @@ public class DefaultTransApiTest {
 		quickPayDto.setVeriCode("666666");
 		transApi.trans(quickPayDto);
 	}
+	
+	/**
+	 * 代付
+	 * @throws Exception
+	 */
 	@Test
 	public void testProxyPay() throws Exception {
 		TransApi<ProxyPayDto> transApi = new DefaultTransApi<ProxyPayDto>();
@@ -45,11 +55,28 @@ public class DefaultTransApiTest {
 		payDto.setNote("测试商品");
 		transApi.trans(payDto);
 	}
+	
+	/**
+	 * 交易查询
+	 * @throws Exception
+	 */
 	@Test
 	public void testTransQuery() throws Exception{
 	    TransApi<TransQueryDto> transApi = new DefaultTransApi<TransQueryDto>();
 	    TransQueryDto dto = new TransQueryDto();
 	    dto.setOrderNo("20170731111134");
         transApi.trans(dto);
+	}
+	
+	/**
+	 * 报备
+	 * @throws Exception 
+	 * @throws PayException 
+	 */
+	@Test
+	public void testReport() throws PayException, Exception{
+	    TransApi<ReportDto> api = new DefaultTransApi<>();
+	    ReportDto dto = new ReportDto();
+	    api.trans(dto);
 	}
 }
