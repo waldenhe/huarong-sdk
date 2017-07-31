@@ -94,7 +94,7 @@ public class BaseDto implements Serializable {
 	public BaseDto() {
 		this.setRequestNo(new SimpleDateFormat("yyyyMMddHHmmssSSS").format(new Date()));
 		this.setVersion("V1.0");
-		this.setMerNo(ConfigUtils.getProperty("merchant_no"));
+		this.setMerNo(ConfigUtils.getProperty("merchant_no")); 
 		this.setOrderDate(new SimpleDateFormat("yyyyMMdd").format(new Date()));
 		this.setTrans_url(ConfigUtils.getProperty("trans_url"));
 		this.setNotifyUrl(ConfigUtils.getProperty("notifyUrl"));
