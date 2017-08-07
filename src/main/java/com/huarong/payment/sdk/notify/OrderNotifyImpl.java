@@ -28,7 +28,7 @@ public class OrderNotifyImpl implements IOrderNotify {
 
     @Override
     public boolean synchronizationNotify(Map<String, String> reqMap, CallBack callBack) {
-        return synchronizationNotify(reqMap, callBack);
+        return asynchronousNotify(reqMap, callBack);
     }
 
 }
