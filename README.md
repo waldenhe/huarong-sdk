@@ -2,7 +2,7 @@ huarong-sdk
 华融支付SDK项目
 
 
-1. 第一步：git clone https://github.com/waldenhe/huarong-sdk.git 
+1. 第一步：git clone https://github.com/waldenhe/huarong-sdk.git 或者
 [直接下载](https://github.com/waldenhe/huarong-sdk/archive/master.zip) 
 2. 第二步： clone项目之后进入项目目录执行mvn eclipse:eclipse
 3. 第三步：使用Eclipse  File>import 
