@@ -10,7 +10,6 @@ import com.huarong.payment.sdk.dto.ProxyPayDto;
 import com.huarong.payment.sdk.dto.QuickPayDto;
 import com.huarong.payment.sdk.dto.ReportDto;
 import com.huarong.payment.sdk.dto.SettingWxPublicNoDto;
-import com.huarong.payment.sdk.dto.TransQueryDto;
 import com.huarong.payment.sdk.dto.WxOrAlipayDto;
 import com.huarong.payment.sdk.enums.ResponseEnum;
 import com.huarong.payment.sdk.exception.PayException;
@@ -68,7 +67,12 @@ public class DefaultTransApiTest {
         payDto.setNote("测试商品");
         transApi.trans(payDto);
     }
-
+    
+    
+    /**
+     * 网银B2C
+     * @throws Exception
+     */
     @Test
     public void testB2C() throws Exception {
         /**
@@ -85,19 +89,6 @@ public class DefaultTransApiTest {
         // 生产环境使用response输出流输出outHtml
         dto = B2CTransApi.getInstance().trans(dto);
         System.out.println(dto.getHtmlData());
-    }
-
-    /**
-     * 交易查询
-     * 
-     * @throws Exception
-     */
-    @Test
-    public void testTransQuery() throws Exception {
-        TransApi<TransQueryDto> transApi = new DefaultTransApi<TransQueryDto>();
-        TransQueryDto dto = new TransQueryDto();
-        dto.setOrderNo("20170731111134");
-        transApi.trans(dto);
     }
 
     /**

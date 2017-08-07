@@ -47,7 +47,7 @@ public class NotifyApiTest {
         System.out.println(notifyresult?"SUCCESS":"ERROR");
         
         //同步通知只处理图形化界面展示即可，不推荐处理业务逻辑
-        orderNotify.asynchronousNotify(map, callBackTest);
+        orderNotify.synchronizationNotify(map, callBackTest);
     }
 
 }
