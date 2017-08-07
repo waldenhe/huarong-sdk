@@ -14,6 +14,7 @@ public class TransQueryApiTest {
 	    TransApi<TransQueryDto> transApi = new DefaultTransApi<TransQueryDto>();
 	    TransQueryDto dto = new TransQueryDto();
 	    dto.setOrderNo("20170731111134");
+	    dto.setOrderDate("20170731");
         transApi.trans(dto);
 	}
 }
