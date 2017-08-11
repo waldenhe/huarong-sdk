@@ -32,7 +32,7 @@ public class DefaultTransApiTest {
     public void testQuickTrans() throws Exception {
         TransApi<QuickPayDto> transApi = new DefaultTransApi<>();
         QuickPayDto quickPayDto = new QuickPayDto();
-        quickPayDto.setOrderNo(new SimpleDateFormat("yyyyMMddHHmmss").format(new Date()));
+        quickPayDto.setOrderNo(new SimpleDateFormat("yyyyMMddHHmmssSS").format(new Date()));
         quickPayDto.setTransAmt("1");
         quickPayDto.setCardName("张三");
         quickPayDto.setCardNo("6217003170000000000");
@@ -47,7 +47,7 @@ public class DefaultTransApiTest {
         transApi.trans(quickPayDto);
         // 第二步支付
         quickPayDto.setVeriCode("666666");
-        transApi.trans(quickPayDto);
+        transApi.trans(quickPayDto); 
     }
 
     /**
@@ -59,7 +59,7 @@ public class DefaultTransApiTest {
     public void testProxyPay() throws Exception {
         TransApi<ProxyPayDto> transApi = new DefaultTransApi<ProxyPayDto>();
         ProxyPayDto payDto = new ProxyPayDto();
-        payDto.setOrderNo(new SimpleDateFormat("yyyyMMddHHmmss").format(new Date()));
+        payDto.setOrderNo(new SimpleDateFormat("yyyyMMddHHmmssSS").format(new Date()));
         payDto.setTransAmt("1");
         payDto.setAcctNo("6223095840010507868");
         payDto.setIsCompay("0");
@@ -180,7 +180,7 @@ public class DefaultTransApiTest {
         dto.setSubMchId("40091673");
         dto.setTransAmt("100");
         dto.setCommodityName("测试商品");
-        dto.setOrderNo(new SimpleDateFormat("yyyyMMddHHmmss").format(new Date()));
+        dto.setOrderNo(new SimpleDateFormat("yyyyMMddHHmmssSS").format(new Date()));
 
         // 如果要测试(部分测试环境因为没有ICP报备不便测试)的话：可以登录微信公众号在用户管理里面随意点击一个用户然后跳转到如下一个地址：
         // https://mp.weixin.qq.com/cgi-bin/singlesendpage?t=message/send&action=index&tofakeid=oZA6OwokWko0fNr1X5DrvTM1bV8c&token=1965779734&lang=zh_CN
@@ -213,7 +213,7 @@ public class DefaultTransApiTest {
         dto.setSubMchId("2088621879773594");
         dto.setTransAmt("100");
         dto.setCommodityName("测试商品");
-        dto.setOrderNo(new SimpleDateFormat("yyyyMMddHHmmss").format(new Date()));
+        dto.setOrderNo(new SimpleDateFormat("yyyyMMddHHmmssSS").format(new Date()));
         api.trans(dto);
         if (ResponseEnum.API_ERROE_CODE_P000.getRespCode().equals(dto.getRespCode())) {
             BrowseUtil.openUrl(dto.getImgUrl());
@@ -235,7 +235,7 @@ public class DefaultTransApiTest {
         dto.setSubMchId("40091673");
         dto.setTransAmt("100");
         dto.setCommodityName("测试商品");
-        dto.setOrderNo(new SimpleDateFormat("yyyyMMddHHmmss").format(new Date()));
+        dto.setOrderNo(new SimpleDateFormat("yyyyMMddHHmmssSS").format(new Date()));
         api.trans(dto);
         if (ResponseEnum.API_ERROE_CODE_P000.getRespCode().equals(dto.getRespCode())) {
             BrowseUtil.openUrl(dto.getImgUrl());
