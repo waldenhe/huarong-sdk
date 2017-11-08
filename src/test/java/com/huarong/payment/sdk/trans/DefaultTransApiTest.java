@@ -5,6 +5,7 @@ import java.util.Date;
 
 import org.junit.Test;
 
+import com.huarong.payment.sdk.dto.AuthenticationDto;
 import com.huarong.payment.sdk.dto.B2CPayDto;
 import com.huarong.payment.sdk.dto.ProxyPayDto;
 import com.huarong.payment.sdk.dto.QuickPayDto;
@@ -35,19 +36,38 @@ public class DefaultTransApiTest {
         quickPayDto.setOrderNo(new SimpleDateFormat("yyyyMMddHHmmssSS").format(new Date()));
         quickPayDto.setTransAmt("1");
         quickPayDto.setCardName("张三");
-        quickPayDto.setCardNo("6217003170000000000");
+        quickPayDto.setCardNo("6217003170000000010");
         quickPayDto.setPhoneNo("13600000000");
         quickPayDto.setCardIdcardType("01");
         quickPayDto.setCardType("01");
         quickPayDto.setCardIdcardNo("512501197203035172");
         quickPayDto.setExpDate("");
         quickPayDto.setCvn2("");
-        quickPayDto.setCommodityName("测试商品");
+        quickPayDto.setCommodityName("30");
         // 第一步签约
         transApi.trans(quickPayDto);
         // 第二步支付
-        quickPayDto.setVeriCode("666666");
+        quickPayDto.setVeriCode("123456");
         transApi.trans(quickPayDto); 
+    }
+    
+    /**
+     * 鉴权
+     * 
+     * @throws Exception
+     */
+    @Test
+    public void testAuthentication() throws Exception {
+        TransApi<AuthenticationDto> transApi = new DefaultTransApi<>();
+        AuthenticationDto authenticationDto = new AuthenticationDto();
+        authenticationDto.setOrderNo(new SimpleDateFormat("yyyyMMddHHmmssSS").format(new Date()));
+        authenticationDto.setAcctNo("6214836552379555");
+        authenticationDto.setCustomerName("张三");
+        authenticationDto.setCerdId("430425196405096714");
+        authenticationDto.setCerdType("01");
+        authenticationDto.setPhoneNo("18003066600");
+        authenticationDto.setProductId("03014");
+        transApi.trans(authenticationDto);
     }
 
     /**
@@ -142,7 +162,7 @@ public class DefaultTransApiTest {
         /** 一次只能配置一个 */
 
         // JS授权目录(一个商户号不能超过五个)
-        dto.setJsApiPath("https://www.lt66my.cn/demo1/");
+        dto.setJsApiPath("http://pycode.ittun.com/merchant/payWeChant/example/");
         api.trans(dto);
         // 关联公众号APPID
         // dto.setSubAppId("wx8f7c2a61b8e914ac");
@@ -178,7 +198,7 @@ public class DefaultTransApiTest {
 
         dto.setProductId("0106");
         dto.setSubMchId("40091673");
-        dto.setTransAmt("100");
+        dto.setTransAmt("1");
         dto.setCommodityName("测试商品");
         dto.setOrderNo(new SimpleDateFormat("yyyyMMddHHmmssSS").format(new Date()));
 
@@ -187,7 +207,8 @@ public class DefaultTransApiTest {
         // 复制地址中的tofakeid就是openId
         // 生产环境openId获取方式。参考：https://mp.weixin.qq.com/wiki?t=resource/res_main&id=mp1421140842
         dto.setOpenid("oZA6OwokWko0fNr1X5DrvTM1bV8c");
-
+        dto.setOpenid("oZA6OwhK49lYBG7cbSPfIg7ML2C0");
+        dto.setNotifyUrl("http://pycode.ittun.com/merchant/payHr/notify_url.php");
         // 如果传了OpenId就会返回dto.getParams()和dto.getPayUrl(),否则返回dto.getPayUrl()
         if (ResponseEnum.API_ERROE_CODE_P000.getRespCode().equals(dto.getRespCode())) {
             BrowseUtil.openUrl(dto.getPayUrl());
